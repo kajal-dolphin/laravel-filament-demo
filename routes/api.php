@@ -18,18 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-
 });
 
 Route::prefix('v1')->group(function () {
     // Define api routes for login and register
-    Route::post('/login', [LoginController::class, 'login'])->name('login');
-    Route::post('/register', [LoginController::class, 'register'])->name('register');
-});
+    // Route::post('/login', [LoginController::class, 'login'])->name('login');
+    // Route::post('/register', [LoginController::class, 'register'])->name('register');
 
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::prefix('v1')->group(function () {
-
+    Route::middleware(['auth:sanctum'])->group(function () {
         // Define api routes for logout
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -41,5 +37,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::delete('user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
     });
 });
+
 
 
